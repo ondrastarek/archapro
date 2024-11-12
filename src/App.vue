@@ -7,7 +7,8 @@ import { RouterLink, RouterView } from 'vue-router'
     <nav>
       <RouterLink to="/">
       <div class="logo">
-        <img src="/logo.svg" alt=""/>
+        <img src="/logo-lines.svg" alt=""/>
+        <span class="company-name">ARCHAPRO</span>
       </div>
       </RouterLink>
       <RouterLink to="/projekty">projekty</RouterLink>
@@ -33,34 +34,44 @@ nav {
   align-items: center;
   width: 100%;
   font-size: 1rem;
-  letter-spacing: 8px;
+  letter-spacing: 5px;
   text-align: center;
-  //border: 2px solid gray;
-  text-transform: uppercase;
   justify-content: end;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Space between logo image and company name */
 }
 
 .logo img {
   display: block;
+  height: 64px;
+  width: 64px;
+}
+
+.company-name {
+  font-size: 1.2rem;
+  color: #333; /* Adjust color as needed */
+  font-weight: bolt;
 }
 
 nav a {
   display: inline-block;
   padding: 1rem;
-  border-left: 2px solid gray;
+  border-left: 1px solid gray;
   text-decoration: none;
-  color: black;
-  font-weight: bold;
-
+  color: #A8A8A8;
+  font-weight: lighter;
 }
 
 nav a:first-of-type {
   border: 0;
-
 }
 
 nav a:hover, .router-link-exact-active {
-  color: #8C3B3B;
+  color: black;
 }
 
 @media (min-width: 1024px) {

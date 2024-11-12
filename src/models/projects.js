@@ -18,9 +18,9 @@ const lorem =  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin o
 export const projects =
   [
     { id: 1, name: 'Project 1', description: lorem, thumbnail: '/projects/1/thumbnail.jpg', gallery: gallery},
-    { id: 2, name: 'Project 2', description: lorem, thumbnail: '/projects/2/thumbnail.jpg', gallery: gallery },
-    { id: 3, name: 'Project 3', description: lorem, thumbnail: '/projects/3/thumbnail.jpg', gallery: gallery },
-    { id: 4, name: 'Project 4', description: lorem, thumbnail: '/projects/4/thumbnail.jpg', gallery: gallery },
-    { id: 5, name: 'Project 5', description: lorem, thumbnail: '/projects/5/thumbnail.jpg', gallery: gallery },
-    { id: 6, name: 'Project 6', description: lorem, thumbnail: '/projects/6/thumbnail.jpg', gallery: gallery }
+    { id: 2, name: 'Project 2', description: lorem, thumbnail: '/projects/2/thumbnail.png', gallery: gallery },
+    { id: 3, name: 'Project 3', description: lorem, thumbnail: '/projects/3/thumbnail.png', gallery: gallery },
+    { id: 4, name: 'Project 4', description: lorem, thumbnail: '/projects/4/thumbnail.png', gallery: gallery },
+    { id: 5, name: 'Project 5', description: lorem, thumbnail: '/projects/5/thumbnail.png', gallery: gallery },
+    { id: 6, name: 'Project 6', description: lorem, thumbnail: '/projects/6/thumbnail.png', gallery: gallery }
   ]

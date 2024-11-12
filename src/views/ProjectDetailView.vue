@@ -114,7 +114,7 @@ export default {
 
 .gallery-item {
   flex: 0 0 calc((100% / 3.5) - 10px);
-  height: 35vw;
+  height: 25vw;
   max-height: 600px;
   overflow: hidden;
   border-radius: 7px;
