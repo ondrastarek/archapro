@@ -2,7 +2,7 @@
   <div v-if="project" class="project-details">
     <div class="text-container">
       <h2>{{ project.name }}</h2>
-      <p>{{ project.description }}</p>
+      <component :is="project.descriptionComponent" />
     </div>
     <div class="gallery-container-wrapper">
       <div class="gallery-container" ref="gallery" @scroll="handleScroll">
@@ -83,6 +83,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 50px 400px 50px 400px;
 }
 
 .text-container h2 {

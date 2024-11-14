@@ -54,7 +54,7 @@ nav {
 .company-name {
   font-size: 1.2rem;
   color: #333; /* Adjust color as needed */
-  font-weight: bolt;
+  font-weight: bold;
 }
 
 nav a {

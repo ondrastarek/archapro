@@ -9,7 +9,7 @@
     >
       <img :src="project.thumbnail" :alt="project.name" />
       <div class="overlay">
-        <h2>Pokračovat na {{project.name }}</h2>
+        <h2>{{project.name }}</h2>
       </div>
     </div>
   </div>
