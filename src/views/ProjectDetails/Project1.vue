@@ -3,7 +3,6 @@
     <p>
       Tento projekt zahrnoval rozsáhlou rekonstrukci stávající budovy, která byla přeměněna na moderní bytový dům. Při návrhu bylo klíčové zachovat stávající konstrukční prvky a zároveň implementovat nové technologie pro zvýšení energetické účinnosti a komfortu obyvatel.
     </p>
-    <h2>Hlavní kroky rekonstrukce</h2>
     <ul>
       <li>Statické posouzení a zajištění budovy.</li>
       <li>Úprava dispozice pro vytvoření moderních bytových jednotek.</li>
@@ -28,12 +27,6 @@ export default {
   padding: 20px;
   font-family: Arial, sans-serif;
 }
-
-.project-description h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
 .project-description p {
   font-size: 18px;
   margin-bottom: 20px;

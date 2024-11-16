@@ -2,14 +2,15 @@
 <template>
   <div class="gallery">
     <div
-      v-for="project in projects"
+      v-for="(project, index) in projects"
       :key="project.id"
       class="gallery-item"
+      :style="{ animationDelay: `${index * 0.1}s` }"
       @click="goToProjectDetails(project)"
     >
       <img :src="project.thumbnail" :alt="project.name" />
       <div class="overlay">
-        <h2>{{project.name }}</h2>
+        <h2>{{ project.name }}</h2>
       </div>
     </div>
   </div>
@@ -45,6 +46,8 @@ export default {
 .gallery-item {
   position: relative;
   cursor: pointer;
+  opacity: 0; /* Ensure items are hidden before animation starts */
+  animation: fadeIn 0.3s ease-in-out forwards;
 }
 
 .gallery-item img {
@@ -72,8 +75,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background: rgb(0,0,0);
-  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 45%, rgba(255,255,255,0) 100%);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(255, 255, 255, 0) 100%);
 }
 
 .gallery-item:hover .overlay {
@@ -91,5 +94,16 @@ export default {
   content: '→';
   margin-left: 10px;
   font-size: 24px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
