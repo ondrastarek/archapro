@@ -1,27 +1,44 @@
 <template>
   <div class="contact">
-    <div class="contact-grid">
+    <div class="contact-container">
       <!-- First Row -->
-      <div class="row first-row">
-        <div class="column contact-details">
-          <div class="owner-contact">
-            <h4>Tomáš Štejfa</h4>
-            <p>+420 123 456 789</p>
-          </div>
-          <div class="owner-contact">
-            <h4>Lenka Kimmerová</h4>
-            <p>+420 123 456 789</p>
-          </div>
+      <div class="contact-details">
+        <div class="company-info">
+          <h1>ARCHAPRO Liberec s.r.o.</h1>
         </div>
-        <div class="column office-address">
-          <p>Myslbekova 206, 463 03 Stráž nad Nisou</p>
+        <div class="details">
+          <div class="detail-item">
+            <h4>Sídlo firmy:</h4>
+            <p>28. října 2362/36, 460 01 Jablonec nad Nisou</p>
+          </div>
+          <div class="detail-item">
+            <h4>Navštívit nás můžete na:</h4>
+            <p>Myslbekova 206, 463 03 Stráž nad Nisou</p>
+          </div>
+          <div class="detail-item">
+            <h4>IČO:</h4>
+            <p>10796690</p>
+          </div>
+          <div class="detail-item">
+            <h4>ID Datové schránky:</h4>
+            <p>arbnht9</p>
+          </div>
+          <div class="detail-item">
+            <h4>Telefon:</h4>
+            <p><a href="tel:+420602642052">+420 602 642 052</a></p>
+          </div>
+          <div class="detail-item">
+            <h4>E-mail:</h4>
+            <p><a href="mailto:info@archaproliberec.cz">info@archaproliberec.cz</a></p>
+          </div>
         </div>
       </div>
+
       <!-- Second Row -->
-      <div class="row map-row">
+      <div class="map">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d289.104260729439!2d15.041442657201937!3d50.791058028649125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470936cb1ba146a9%3A0x7aa3f06a7400ef6f!2sMyslbekova%20206%2C%20463%2003%20Str%C3%A1%C5%BE%20nad%20Nisou!5e0!3m2!1scs!2scz!4v1731789090269!5m2!1scs!2scz"
-          width="1200"
+          width="100%"
           height="450"
           style="border:0;"
           allowfullscreen=""
@@ -35,64 +52,72 @@
 
 <script>
 export default {
-  name: 'ContactView'
-}
+  name: 'ContactView',
+};
 </script>
 
 <style scoped>
 .contact {
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 6rem;
-  background-color: #fff;
+  align-items: flex-start;
+  padding: 4rem;
 }
 
-.contact-grid {
-  display: grid;
-  grid-template-rows: auto auto;
-  gap: 4rem;
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 1500px;
   width: 100%;
-  max-width: 1200px;
-  text-align: center;
-}
-
-.first-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  padding: 2rem;
 }
 
 .contact-details {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  gap: 4rem;
+  text-align: left;
 }
 
-.office-address {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.map-row {
+.company-info h1 {
+ font-family: 'Georgia', serif;
+  font-size: 32px;
   text-align: center;
+  margin-bottom: 1rem;
 }
 
-.owner-contact {
-  margin-bottom: 1.5rem;
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
 }
 
-h4 {
-  color: #333;
-  font-size: 24px;
+.detail-item h4 {
+  font-size: 18px;
+  margin-bottom: 0.5rem;
 }
 
-p {
-  color: #555;
-  font-size: 20px;
-  line-height: 2;
+.detail-item p {
+  color: #7f8c8d;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.detail-item a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.map {
+  margin-top: 2.4rem;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+iframe {
+  border: none;
+  border-radius: 8px;
 }
 </style>

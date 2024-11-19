@@ -47,18 +47,19 @@ export default {
   position: relative;
   cursor: pointer;
   opacity: 0; /* Ensure items are hidden before animation starts */
-  animation: fadeIn 0.3s ease-in-out forwards;
+  animation: fadeIn 0.4s ease-in-out forwards;
 }
 
 .gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: grayscale(100%);
   transition: filter 0.3s ease;
 }
 
 .gallery-item:hover img {
-  filter: grayscale(100%);
+  filter: grayscale(0%);
 }
 
 .overlay {

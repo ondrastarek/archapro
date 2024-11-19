@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <header class="hero-section">
-      <h1 class="company-name">Archapro Liberec</h1>
+      <h1 class="company-name">ARCHAPRO Liberec s.r.o.</h1>
       <p class="tagline">architektonická a projekční kancelář, statika pozemních staveb</p>
       <div class="sketch-image">
         <img src="/index_bg.jpg" alt="" />

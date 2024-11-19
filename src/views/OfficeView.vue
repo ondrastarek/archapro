@@ -3,7 +3,7 @@
     <header class="office-header">
       <h1>Naše Služby</h1>
       <p class="office-intro">
-        Jsme architektonická a projekční kancelář zaměřená na komplexní služby v oblasti architektury, statiky a stavebnictví. Naším cílem je poskytovat kvalitní služby od návrhu po realizaci.
+        Jsme architektonická a projekční kancelář zaměřená na komplexní služby v oblasti architektury, statiky a pozemních staveb. Naším cílem je poskytovat kvalitní služby od návrhu po realizaci.
       </p>
     </header>
 
@@ -23,28 +23,28 @@ export default {
     return {
       services: [
         {
-          title: 'Architektonická kancelář',
-          description: 'Kompletní řešení od studie po projektovou dokumentaci, včetně poradenství.'
+          title: 'Architektonické a projekční práce',
+          description: 'Kompletní řešení od studie po stavebně technickou projektovou dokumentaci, včetně poradenství a řešení interiéru.'
         },
         {
           title: 'Pasportizace staveb',
-          description: 'Podrobné zaměření objektů a vytvoření dokumentace aktuálního stavu.'
+          description: 'Podrobné zaměření stávajících objektů a vytvoření dokumentace aktuálního stavu.'
         },
         {
           title: 'Statika staveb',
-          description: 'Statické posudky a návrhy pro bezpečnost a stabilitu staveb.'
+          description: 'Stavebně konstrukční řešení staveb, statické posudky a návrhy.'
         },
         {
           title: 'Autorský a technický dozor',
-          description: 'Dohlédnutí na realizaci staveb, aby odpovídala plánu a projektovým požadavkům.'
+          description: 'Dohled na realizaci staveb, zajištění souladu projektu s jeho realizací, včetně dodržování platné legislativy a řízení ekonomiky stavby.'
         },
         {
-          title: 'Výkaz výměr a rozpočet',
-          description: 'Detailní přehled nákladů a prací pro efektivní řízení projektu.'
+          title: 'Výkaz výměr a položkový rozpočet',
+          description: 'Výkaz výměr a položkový rozpočet stavby jsou důležitými podklady pro efektivní realizaci stavebního díla a kontrolu přiměřenosti nákladů na výstavbu.'
         },
         {
           title: 'Inženýrská činnost',
-          description: 'Komplexní podpora pro zajištění stavebních povolení a administrativy.'
+          description: 'Zajištění stavebních povolení a kolaudace stavby.'
         }
       ]
     };
@@ -59,11 +59,10 @@ export default {
   align-items: center;
   text-align: center;
   padding: 4.8rem; /* Increased padding for more space */
-  background-color: #fff; /* White background for a professional look */
 }
 
 .office-header {
-  max-width: 800px;
+  max-width: 1000px;
   margin-bottom: 4.8rem; /* Increased margin for more spacing below header */
 }
 
@@ -84,7 +83,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 3.6rem;
-  max-width: 1400px;
+  max-width: 1800px;
   width: 100%;
 }
 
