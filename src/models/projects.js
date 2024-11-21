@@ -6,19 +6,24 @@ import Project2 from '@/views/ProjectDetails/Project2.vue'
 const project1gallery = [
   '/projects/1/gallery/photo1.jpg',
   '/projects/1/gallery/photo2.jpg',
-  '/projects/1/gallery/photo3.jpg',
-  '/projects/1/gallery/photo4.jpg',
   '/projects/1/gallery/photo5.jpg',
+  '/projects/1/gallery/photo4.jpg',
+  '/projects/1/gallery/photo3.jpg',
   '/projects/1/gallery/photo6.jpg'
 ]
 
 const project2gallery = [
-  '/projects/2/gallery/photo5.jpg',
-  '/projects/2/gallery/photo6.jpg',
-  '/projects/2/gallery/photo2.jpg',
   '/projects/2/gallery/photo1.jpg',
-  '/projects/2/gallery/photo3.jpg',
-  '/projects/2/gallery/photo4.jpg'
+  '/projects/2/gallery/photo2.jpg',
+  '/projects/2/gallery/photo3.jpg'
+]
+
+const project3gallery = [
+  '/projects/3/gallery/photo1.jpg',
+  '/projects/3/gallery/photo2.jpg',
+  '/projects/3/gallery/photo3.jpg',
+  '/projects/3/gallery/photo4.jpg',
+  '/projects/3/gallery/photo5.jpg'
 ]
 
 const gallery = [
@@ -40,8 +45,8 @@ const lorem =  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin o
 export const projects =
   [
     { id: 1, name: 'Rekonstrukce objektu na bytový dům', descriptionComponent: Project1, thumbnail: '/projects/1/thumbnail.jpg', gallery: project1gallery },
-    { id: 2, name: 'Studie - velkoprostorové kanceláře', descriptionComponent: Project2, thumbnail: '/projects/2/thumbnail.png', gallery: project2gallery },
-    { id: 3, name: 'Bytový dům ve svahu', description: lorem, thumbnail: '/projects/3/thumbnail.png', gallery: gallery },
+    { id: 2, name: 'Novostavba rodinného domu s garáží', descriptionComponent: Project2, thumbnail: '/projects/2/thumbnail.png', gallery: project2gallery },
+    { id: 3, name: 'Novostavba bytového domu', description: lorem, thumbnail: '/projects/3/thumbnail.png', gallery: project3gallery },
     { id: 4, name: 'Novostavba penzionu', description: lorem, thumbnail: '/projects/4/thumbnail.png', gallery: gallery },
     { id: 5, name: 'Interiér mateřské školky', description: lorem, thumbnail: '/projects/5/thumbnail.png', gallery: gallery },
     { id: 6, name: 'Průmyslový areál', description: lorem, thumbnail: '/projects/6/thumbnail.png', gallery: gallery }
