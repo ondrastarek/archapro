@@ -1,11 +1,11 @@
 <template>
   <div class="contact">
+    <div class="contact-header">
+      <h1>ARCHAPRO Liberec s.r.o.</h1>
+    </div>
     <div class="contact-container">
       <!-- First Row -->
       <div class="contact-details">
-        <div class="company-info">
-          <h1>ARCHAPRO Liberec s.r.o.</h1>
-        </div>
         <div class="details">
           <div class="detail-item">
             <h4>Sídlo firmy:</h4>
@@ -59,9 +59,22 @@ export default {
 <style scoped>
 .contact {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 4rem;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4.8rem;
+}
+
+.contact-header {
+  max-width: 1000px;
+  margin-bottom: 4.8rem;
+}
+
+.contact-header h1 {
+  font-family: 'Georgia', serif;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
 }
 
 .contact-container {
@@ -70,21 +83,12 @@ export default {
   gap: 3rem;
   max-width: 1500px;
   width: 100%;
-  padding: 2rem;
 }
 
 .contact-details {
   display: flex;
   flex-direction: column;
   gap: 4rem;
-  text-align: left;
-}
-
-.company-info h1 {
- font-family: 'Georgia', serif;
-  font-size: 32px;
-  text-align: center;
-  margin-bottom: 1rem;
 }
 
 .details {
@@ -110,7 +114,7 @@ export default {
 }
 
 .map {
-  margin-top: 2.4rem;
+  margin-top: 3rem;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -119,5 +123,18 @@ export default {
 iframe {
   border: none;
   border-radius: 8px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .details {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .details {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>

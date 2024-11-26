@@ -54,7 +54,7 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 10rem;
 }
 
 .sketch-image img {
