@@ -46,7 +46,7 @@ export default {
 .gallery-item {
   position: relative;
   cursor: pointer;
-  opacity: 0; /* Ensure items are hidden before animation starts */
+  opacity: 0;
   animation: fadeIn 0.4s ease-in-out forwards;
 }
 

@@ -26,6 +26,7 @@ export default {
   text-align: center;
   padding: 2rem;
   background-color: white;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .hero-section {
@@ -58,9 +59,10 @@ export default {
 }
 
 .sketch-image img {
-  width: 100%;
-  max-width: 900px; /* Limit each image's width */
-  height: 100%;
+  width: 100%; /* Make the images responsive */
+  max-width: 900px; /* Limit image size for large screens */
+  height: auto; /* Allow natural aspect ratio */
+  object-fit: contain; /* Ensure the image is fully visible without cropping */
 }
 
 /* Responsive styling */
@@ -81,6 +83,28 @@ export default {
 @media (max-width: 768px) {
   .sketch-image {
     flex-direction: column; /* Stack images vertically */
+    align-items: center; /* Center the stacked images */
+  }
+
+  .sketch-image img {
+    max-width: 100%; /* Ensure full-width responsiveness */
+    height: auto; /* Preserve the original aspect ratio */
+  }
+}
+
+@media (max-width: 480px) {
+  .sketch-image img {
+    width: 100%; /* Ensure images take up full width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: none; /* Remove width limitation */
+  }
+
+  .tagline {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+
+  .company-name {
+    font-size: 2.5rem; /* Adjust heading size for smaller screens */
   }
 }
 </style>
