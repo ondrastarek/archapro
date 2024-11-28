@@ -1,11 +1,11 @@
 <template>
   <div class="office">
-    <header class="office-header">
+    <div class="office-header">
       <h1>Naše Služby</h1>
       <p class="office-intro">
         Jsme architektonická a projekční kancelář zaměřená na komplexní služby v oblasti architektury, statiky a pozemních staveb. Naším cílem je poskytovat kvalitní služby od návrhu po realizaci.
       </p>
-    </header>
+    </div>
 
     <section class="services">
       <div class="service" v-for="(service, index) in services" :key="index">
@@ -93,11 +93,6 @@ export default {
   border-radius: 10px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.service:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .service h2 {

@@ -1,13 +1,13 @@
 <template>
   <div class="index">
-    <header class="hero-section">
+    <div class="hero-section">
       <h1 class="company-name">ARCHAPRO Liberec s.r.o.</h1>
       <p class="tagline">architektonická a projekční kancelář, statika pozemních staveb</p>
       <div class="sketch-image">
         <img src="/index-bg-first.jpg" alt="" />
         <img src="/index-bg-second.jpg" alt="" />
       </div>
-    </header>
+    </div>
   </div>
 </template>
 
@@ -66,7 +66,7 @@ export default {
 }
 
 /* Responsive styling */
-@media (min-width: 768px) {
+@media (min-width: 1468px) {
   .company-name {
     font-size: 4rem;
   }
@@ -80,23 +80,14 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .sketch-image {
-    flex-direction: column; /* Stack images vertically */
-    align-items: center; /* Center the stacked images */
+    padding: 0;
   }
 
-  .sketch-image img {
-    max-width: 100%; /* Ensure full-width responsiveness */
-    height: auto; /* Preserve the original aspect ratio */
-  }
-}
-
-@media (max-width: 480px) {
-  .sketch-image img {
-    width: 100%; /* Ensure images take up full width */
-    height: auto; /* Maintain aspect ratio */
-    max-width: none; /* Remove width limitation */
+  .index {
+    padding-right: 0;
+    padding-left: 0;
   }
 
   .tagline {

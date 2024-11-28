@@ -12,12 +12,12 @@
             <p>28. října 2362/36, 460 01 Jablonec nad Nisou</p>
           </div>
           <div class="detail-item">
-            <h4>Navštívit nás můžete na:</h4>
+            <h4>Navštívit nás můžete na adrese:</h4>
             <p>Myslbekova 206, 463 03 Stráž nad Nisou</p>
           </div>
           <div class="detail-item">
-            <h4>IČO:</h4>
-            <p>10796690</p>
+            <h4>IČO/DIČ:</h4>
+            <p>10796690/CZ10796690</p>
           </div>
           <div class="detail-item">
             <h4>ID Datové schránky:</h4>

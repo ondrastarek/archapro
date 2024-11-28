@@ -1,13 +1,17 @@
 <template>
   <div v-if="isOpen" class="slider-container">
     <div class="slider-blurred-background" @click="closeSlider"></div>
-    <div class="slider-content">
+    <div class="slider-content"
+         @touchstart="handleTouchStart"
+         @touchmove="handleTouchMove"
+         @touchend="handleTouchEnd"
+    >
       <img
         v-for="(image, index) in [currentImage]"
         :key="index + currentIndex"
         :src="image"
         class="slider-image"
-        alt="TBD"
+        alt=""
       />
     </div>
     <div class="slider-controls">
@@ -28,7 +32,9 @@ export default {
   },
   data() {
     return {
-      currentIndex: this.startIndex
+      currentIndex: this.startIndex,
+      touchStartX: 0, // Starting X coordinate for touch
+      touchEndX: 0 // Ending X coordinate for touch
     }
   },
   computed: {
@@ -65,6 +71,25 @@ export default {
       } else if (event.key === 'Escape') {
         this.closeSlider()
       }
+    },
+    handleTouchStart(event) {
+      this.touchStartX = event.touches[0].clientX; // Record the X position of the first touch
+    },
+    handleTouchMove(event) {
+      this.touchEndX = event.touches[0].clientX; // Update the X position as the touch moves
+    },
+    handleTouchEnd() {
+      const swipeThreshold = 50; // Minimum distance for a swipe to be registered
+      if (this.touchEndX < this.touchStartX - swipeThreshold) {
+        // Swiped left
+        this.nextImage();
+      } else if (this.touchEndX > this.touchStartX + swipeThreshold) {
+        // Swiped right
+        this.prevImage();
+      }
+      // Reset touch positions
+      this.touchStartX = 0;
+      this.touchEndX = 0;
     },
     closeSlider() {
       this.$emit('close')
@@ -111,6 +136,7 @@ export default {
   object-fit: cover;
   margin: auto;
   border-radius: 7px;
+  transition: transform 0.3s ease; /* Smooth transition for any transform */
 }
 
 .slider-controls {

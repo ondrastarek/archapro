@@ -59,8 +59,6 @@ export default {
 .project-details {
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  height: 80vh;
 }
 
 .text-container {
@@ -75,10 +73,11 @@ export default {
 }
 
 .gallery-container-wrapper {
+  flex: 1; /* Dynamically grows to fill the remaining space */
   display: flex;
   justify-content: center;
-  flex: 1;
-  padding-bottom: 50px;
+  align-items: flex-start; /* Ensures the gallery aligns properly */
+  padding-bottom: 50px; /* Leaves space for the footer */
 }
 
 .gallery-container {
@@ -95,11 +94,7 @@ export default {
   padding: 0;
   position: relative;
   border-radius: 8px;
-  transition: transform 0.5s ease;
-}
-
-.gallery-item:hover {
-  transform: scale(1.01);
+  transition: transform 0.3s ease;
 }
 
 .gallery-item img {
@@ -107,23 +102,23 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 0px;
+  border-radius: 0;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
-.gallery-item img:hover {
-  transform: scale(1.01);
+.gallery-item:hover {
+  transform: scale(1.02);
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1528px) {
   .gallery-item {
-    flex: 66%;
-    max-width: 50%;
+    flex: 33%;
+    max-width: 49%;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 764px) {
   .gallery-item {
     flex: 100%;
     max-width: 100%;

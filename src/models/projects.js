@@ -6,7 +6,7 @@ const generateGalleryPaths = (projectId, count) =>
 export const projects = [
   {
     id: 1,
-    name: 'Rekonstrukce objektu na bytový dům',
+    name: 'Stavební úpravy bytového domu',
     thumbnail: '/projects/1/thumbnail.jpg',
     gallery: generateGalleryPaths(1, 6),
   },
@@ -42,15 +42,15 @@ export const projects = [
   },
   {
     id: 7,
-    name: 'Rekreační objekt',
+    name: 'Vestavba kancelářských prostorů do stávajícího objektu průmyslové haly',
     thumbnail: '/projects/7/thumbnail.png',
-    gallery: generateGalleryPaths(7, 4),
+    gallery: generateGalleryPaths(7, 5),
   },
   {
     id: 8,
-    name: 'Vestavba kancelářských prostorů do stávajícího objektu průmyslové haly',
+    name: 'Rekreační objekt',
     thumbnail: '/projects/8/thumbnail.png',
-    gallery: generateGalleryPaths(8, 5),
+    gallery: generateGalleryPaths(8, 4),
   },
   {
     id: 9,

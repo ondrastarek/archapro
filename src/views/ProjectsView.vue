@@ -1,4 +1,3 @@
-<!-- src/views/Projekty.vue -->
 <template>
   <div class="gallery">
     <div
@@ -39,7 +38,7 @@ export default {
 <style scoped>
 .gallery {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* Default to 3 columns for desktop */
   gap: 10px;
 }
 
@@ -77,7 +76,12 @@ export default {
   align-items: center;
   justify-content: flex-end;
   background: rgb(0, 0, 0);
-  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.5) 45%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .gallery-item:hover .overlay {
@@ -86,15 +90,17 @@ export default {
 
 .overlay h2 {
   margin: 0;
-  font-size: 24px;
+  font-size: clamp(16px, 1vw, 24px);
   display: flex;
   align-items: center;
+  text-align: center;
+  white-space: pre-line;
+
 }
 
 .overlay h2::after {
   content: '→';
   margin-left: 10px;
-  font-size: 24px;
 }
 
 @keyframes fadeIn {
@@ -105,6 +111,27 @@ export default {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: 1fr; /* 1 column for small screens (phones) */
+  }
+
+  .gallery-item img {
+    filter: grayscale(0%);
+  }
+
+  .gallery-item .overlay {
+    opacity: 1;
   }
 }
 </style>
