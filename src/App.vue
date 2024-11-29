@@ -1,12 +1,50 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useStore } from 'vuex' // Import Vuex store
 
-const isMenuOpen = ref(false)
+const store = useStore(); // Access the store
+
+const isMenuOpen = ref(false);
 
 const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value
-}
+  isMenuOpen.value = !isMenuOpen.value;
+};
+
+// Close the menu if clicked outside
+const handleClickOutside = (event) => {
+  const nav = document.querySelector('.mobile-nav');
+  const menuButton = document.querySelector('.hamburger-menu');
+
+  // Check if the click is outside the nav or the hamburger menu
+  if (isMenuOpen.value && nav && !nav.contains(event.target) && !menuButton.contains(event.target)) {
+    isMenuOpen.value = false; // Close the menu
+  }
+};
+
+// Attach and detach the event listener
+onMounted(() => {
+  window.addEventListener('click', handleClickOutside);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('click', handleClickOutside);
+});
+
+
+// Preload project gallery images
+const preloadGalleryImages = () => {
+  const projects = store.getters.projects; // Access projects from Vuex getters
+  projects.forEach(project => {
+      const img = new Image();
+      img.src = project.thumbnail;
+  });
+  console.log('Thumbnails images preloaded globally.');
+};
+
+onMounted(() => {
+  preloadGalleryImages(); // Start preloading gallery images when the app is mounted
+});
 </script>
 
 <template>

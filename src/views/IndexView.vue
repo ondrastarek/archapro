@@ -83,6 +83,7 @@ export default {
 @media (max-width: 767px) {
   .sketch-image {
     padding: 0;
+    margin-top: 2rem;
   }
 
   .index {

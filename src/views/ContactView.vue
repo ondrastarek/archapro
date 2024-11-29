@@ -130,6 +130,9 @@ iframe {
   .details {
     grid-template-columns: 1fr;
   }
+  .map {
+
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {

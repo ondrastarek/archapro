@@ -42,7 +42,7 @@ export const projects = [
   },
   {
     id: 7,
-    name: 'Vestavba kancelářských prostorů do stávajícího objektu průmyslové haly',
+    name: 'Vestavba kancelářských prostorů do stávající průmyslové haly',
     thumbnail: '/projects/7/thumbnail.png',
     gallery: generateGalleryPaths(7, 5),
   },

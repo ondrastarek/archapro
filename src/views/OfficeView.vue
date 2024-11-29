@@ -113,6 +113,10 @@ export default {
   .services {
     grid-template-columns: 1fr;
   }
+
+  .office {
+    padding: 2rem;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {

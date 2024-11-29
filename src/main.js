@@ -7,7 +7,6 @@ import router from './router'
 import { projects } from './models/projects.js'
 
 const store = createStore({
-
   state () {
     return {
       projects: projects,

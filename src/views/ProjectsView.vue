@@ -20,18 +20,30 @@ export default {
   name: 'ProjectsView',
   computed: {
     projects() {
-      return this.$store.state.projects;
-    }
+      return this.$store.getters.projects;
+    },
   },
   methods: {
     goToProjectDetails(project) {
       this.$store.dispatch('selectProject', project);
       this.$router.push({
         name: 'project-details',
-        params: { id: project.id }
+        params: { id: project.id },
       });
-    }
-  }
+    },
+    preloadGalleryImages() {
+      this.projects.forEach((project) => {
+        project.gallery.forEach((image) => {
+          const img = new Image();
+          img.src = image;
+        });
+      });
+      console.log('Gallery images preloaded.');
+    },
+  },
+  mounted() {
+    this.preloadGalleryImages();
+  },
 };
 </script>
 
@@ -128,6 +140,10 @@ export default {
 
   .gallery-item img {
     filter: grayscale(0%);
+  }
+
+  .overlay {
+    height: 35%;
   }
 
   .gallery-item .overlay {
