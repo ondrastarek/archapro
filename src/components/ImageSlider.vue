@@ -15,9 +15,15 @@
       />
     </div>
     <div class="slider-controls">
-      <button class="arrow left-arrow" @click="prevImage">&#706;</button>
-      <button class="arrow right-arrow" @click="nextImage">&#707;</button>
-      <button class="close-button" @click="closeSlider">&times;</button>
+      <button class="vector arrow left-arrow" @click="prevImage">
+        <img src="/vectors/left.svg" alt="Previous" />
+      </button>
+      <button class="vector arrow right-arrow" @click="nextImage">
+        <img src="/vectors/right.svg" alt="Next" />
+      </button>
+      <button class="vector close-button" @click="closeSlider">
+        <img src="/vectors/cross.svg" alt="Close" />
+      </button>
     </div>
   </div>
 </template>
@@ -156,15 +162,20 @@ export default {
 .arrow, .close-button {
   background-color: transparent;
   border: none;
-  color: white; /* Change color to white */
-  font-size: 2rem;
   padding-inline: 15px;
   cursor: pointer;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.arrow:hover, .close-button:hover {
+.arrow img, .close-button img {
+  object-fit: contain;
+  filter: brightness(1);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.arrow:hover img, .close-button:hover img {
   transform: scale(1.2);
+  filter: brightness(1.5);
 }
 
 </style>
