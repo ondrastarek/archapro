@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="refresh" content="0; url=/" />
+</head>
+<body>
+<script>
+  // Redirect to the correct route
+  const pathname = window.location.pathname;
+  const newPath = pathname.replace('/', '');
+  window.location.href = '/' + newPath;
+</script>
+</body>
+</html>
