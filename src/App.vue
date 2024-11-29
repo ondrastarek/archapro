@@ -4,7 +4,6 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { useStore } from 'vuex' // Import Vuex store
 
 const store = useStore(); // Access the store
-
 const isMenuOpen = ref(false);
 
 const toggleMenu = () => {
