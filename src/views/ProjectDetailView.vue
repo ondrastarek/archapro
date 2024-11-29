@@ -5,18 +5,24 @@
     </div>
     <div class="gallery-container-wrapper">
       <div class="gallery-container">
-        <div v-for="(image, index) in project.gallery" :key="index" class="gallery-item" @click="openSlider(index)">
-          <img :src="image" :alt="`Gallery image ${index + 1}`" />
-        </div>
+        <div
+          v-for="(image, index) in project.gallery"
+          :key="index"
+          class="gallery-item"
+          :style="{ animationDelay: `${index * 0.1}s` }"
+        @click="openSlider(index)"
+        >
+        <img :src="image" :alt="`Gallery image ${index + 1}`" />
       </div>
     </div>
-    <ImageSlider
-      v-if="isSliderOpen"
-      :images="project.gallery"
-      :startIndex="selectedIndex"
-      :isOpen="isSliderOpen"
-      @close="isSliderOpen = false"
-    />
+  </div>
+  <ImageSlider
+    v-if="isSliderOpen"
+    :images="project.gallery"
+    :startIndex="selectedIndex"
+    :isOpen="isSliderOpen"
+    @close="isSliderOpen = false"
+  />
   </div>
   <div v-else>
     <p>Loading...</p>
@@ -25,29 +31,59 @@
 
 <script>
 import ImageSlider from '@/components/ImageSlider.vue';
+import { useStore } from 'vuex'; // Import Vuex store
+import { onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router'; // Access route params
 
 export default {
   name: 'ProjectDetails',
   components: {
     ImageSlider,
   },
-  data() {
+  setup() {
+    const store = useStore(); // Access Vuex store
+    const route = useRoute(); // Access route params
+
+    const isSliderOpen = ref(false);
+    const selectedIndex = ref(0);
+    const project = ref(null);
+
+    // Load project data
+    const loadProject = () => {
+      const projectId = parseInt(route.params.id, 10); // Get project ID from route
+      const storedProject = store.getters.selectedProject;
+
+      // If project is already in Vuex, use it
+      if (storedProject && storedProject.id === projectId) {
+        project.value = storedProject;
+      } else {
+        // Fetch project from Vuex state
+        const allProjects = store.getters.projects;
+        project.value = allProjects.find((p) => p.id === projectId);
+      }
+
+      // If project is still null, handle the error or fallback
+      if (!project.value) {
+        console.error('Project not found!');
+      }
+    };
+
+    const openSlider = (index) => {
+      selectedIndex.value = index;
+      isSliderOpen.value = true;
+    };
+
+    onMounted(() => {
+      loadProject(); // Load project data when component is mounted
+    });
+
     return {
-      isSliderOpen: false,
-      selectedIndex: 0,
+      project,
+      isSliderOpen,
+      selectedIndex,
+      openSlider,
     };
   },
-  computed: {
-    project() {
-      return this.$store.getters.selectedProject;
-    }
-  },
-  methods: {
-    openSlider(index) {
-      this.selectedIndex = index;
-      this.isSliderOpen = true;
-    },
-  }
 };
 </script>
 
@@ -94,6 +130,8 @@ export default {
   padding: 0;
   position: relative;
   border-radius: 8px;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn 0.4s ease-in-out forwards; /* Fade-in animation */
   transition: transform 0.3s ease;
 }
 
@@ -109,6 +147,17 @@ export default {
 
 .gallery-item:hover {
   transform: scale(1.02);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media screen and (max-width: 1528px) {
