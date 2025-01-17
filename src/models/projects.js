@@ -58,4 +58,40 @@ export const projects = [
     thumbnail: '/projects/9/thumbnail.png',
     gallery: generateGalleryPaths(9, 6),
   },
+  {
+    id: 10,
+    name: 'Půdní vestavba bytové jednotky',
+    thumbnail: '/projects/10/thumbnail.jpeg',
+    gallery: generateGalleryPaths(10, 6),
+  },
+  {
+    id: 11,
+    name: 'Novostavba rodinného domu',
+    thumbnail: '/projects/11/thumbnail.jpeg',
+    gallery: generateGalleryPaths(11, 5),
+  },
+  {
+    id: 12,
+    name: 'Novostavba rodinného domu',
+    thumbnail: '/projects/12/thumbnail.jpeg',
+    gallery: generateGalleryPaths(12, 6),
+  },
+  {
+    id: 13,
+    name: 'Novostavba rodinného domu',
+    thumbnail: '/projects/13/thumbnail.png',
+    gallery: generateGalleryPaths(13, 4),
+  },
+  {
+    id: 14,
+    name: 'Novostavba rodinného domu',
+    thumbnail: '/projects/14/thumbnail.jpeg',
+    gallery: generateGalleryPaths(14, 4),
+  },
+  {
+    id: 15,
+    name: 'Novostavba rodinného domu',
+    thumbnail: '/projects/15/thumbnail.jpeg',
+    gallery: generateGalleryPaths(15, 6),
+  },
 ];
