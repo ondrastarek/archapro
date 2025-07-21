@@ -3,47 +3,51 @@ import { RouterLink, RouterView } from 'vue-router'
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useStore } from 'vuex' // Import Vuex store
 
-const store = useStore(); // Access the store
-const isMenuOpen = ref(false);
+const store = useStore() // Access the store
+const isMenuOpen = ref(false)
 
 const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value;
-};
+  isMenuOpen.value = !isMenuOpen.value
+}
 
 // Close the menu if clicked outside
 const handleClickOutside = (event) => {
-  const nav = document.querySelector('.mobile-nav');
-  const menuButton = document.querySelector('.hamburger-menu');
+  const nav = document.querySelector('.mobile-nav')
+  const menuButton = document.querySelector('.hamburger-menu')
 
   // Check if the click is outside the nav or the hamburger menu
-  if (isMenuOpen.value && nav && !nav.contains(event.target) && !menuButton.contains(event.target)) {
-    isMenuOpen.value = false; // Close the menu
+  if (
+    isMenuOpen.value &&
+    nav &&
+    !nav.contains(event.target) &&
+    !menuButton.contains(event.target)
+  ) {
+    isMenuOpen.value = false // Close the menu
   }
-};
+}
 
 // Attach and detach the event listener
 onMounted(() => {
-  window.addEventListener('click', handleClickOutside);
-});
+  window.addEventListener('click', handleClickOutside)
+})
 
 onUnmounted(() => {
-  window.removeEventListener('click', handleClickOutside);
-});
-
+  window.removeEventListener('click', handleClickOutside)
+})
 
 // Preload project gallery images
 const preloadGalleryImages = () => {
-  const projects = store.getters.projects; // Access projects from Vuex getters
-  projects.forEach(project => {
-      const img = new Image();
-      img.src = project.thumbnail;
-  });
-  console.log('Thumbnails images preloaded globally.');
-};
+  const projects = store.getters.projects // Access projects from Vuex getters
+  projects.forEach((project) => {
+    const img = new Image()
+    img.src = project.thumbnail
+  })
+  console.log('Thumbnails images preloaded globally.')
+}
 
 onMounted(() => {
-  preloadGalleryImages(); // Start preloading gallery images when the app is mounted
-});
+  preloadGalleryImages() // Start preloading gallery images when the app is mounted
+})
 </script>
 
 <template>
@@ -56,21 +60,14 @@ onMounted(() => {
             <img src="/logo2.svg" alt="Logo" />
           </div>
         </RouterLink>
-        <div
-          class="hamburger-menu"
-          :class="{ open: isMenuOpen }"
-          @click="toggleMenu"
-        >
+        <div class="hamburger-menu" :class="{ open: isMenuOpen }" @click="toggleMenu">
           <span></span>
           <span></span>
           <span></span>
         </div>
       </div>
       <!-- Mobile Navigation -->
-      <div
-        class="mobile-nav"
-        :class="{ visible: isMenuOpen }"
-      >
+      <div class="mobile-nav" :class="{ visible: isMenuOpen }">
         <RouterLink to="/projekty" @click="toggleMenu">projekty</RouterLink>
         <RouterLink to="/kancelar" @click="toggleMenu">ateliér</RouterLink>
         <RouterLink to="/kontakt" @click="toggleMenu">kontakt</RouterLink>
@@ -95,10 +92,12 @@ onMounted(() => {
     <!-- Footer -->
     <footer class="footer">
       <div class="footer-content">
-        <span>&copy; 2021-2024 ARCHAPRO Liberec s.r.o.</span>
+        <span>&copy; 2021-2025 ARCHAPRO Liberec s.r.o.</span>
         <span>
           implemented by
-          <a href="https://ondrejstarek.cz" target="_blank" rel="noopener noreferrer">ondrejstarek</a>
+          <a href="https://ondrejstarek.cz" target="_blank" rel="noopener noreferrer"
+            >ondrejstarek</a
+          >
         </span>
       </div>
     </footer>
@@ -175,7 +174,10 @@ header {
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s ease;
 }
 
 .mobile-nav.visible {
@@ -191,7 +193,7 @@ header {
   width: 100%; /* Makes each link span the full width of the container */
   padding: 1rem 0;
   text-decoration: none;
-  color: #A8A8A8;
+  color: #a8a8a8;
   font-size: 1rem;
   letter-spacing: 2px;
   border-bottom: 1px solid #ccc;
@@ -257,7 +259,7 @@ header {
     padding: 1rem;
     border-left: 1px solid gray;
     text-decoration: none;
-    color: #A8A8A8;
+    color: #a8a8a8;
     font-weight: lighter;
   }
 
