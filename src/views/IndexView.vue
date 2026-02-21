@@ -20,7 +20,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 2rem;
+  padding: var(--space-page);
   background-color: var(--color-background);
   overflow-x: hidden;
 }
@@ -28,7 +28,7 @@
 .hero-section {
   max-width: 1920px;
   margin: 0 auto;
-  padding: 3rem 1rem;
+  padding: var(--space-3xl) var(--space-page-mobile);
 }
 
 .company-name {
@@ -36,13 +36,13 @@
   font-size: 3rem;
   font-weight: lighter;
   color: var(--color-text-primary);
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-sm);
 }
 
 .tagline {
   font-size: 1.2rem;
   color: var(--color-text-muted);
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-page);
   letter-spacing: 1px;
 }
 
@@ -50,8 +50,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 10rem;
+  gap: var(--space-md);
+  margin-top: var(--space-hero-offset);
 }
 
 .sketch-image img {
@@ -78,7 +78,7 @@
 @media (max-width: 767px) {
   .sketch-image {
     padding: 0;
-    margin-top: 2rem;
+    margin-top: var(--space-page);
   }
 
   .index {

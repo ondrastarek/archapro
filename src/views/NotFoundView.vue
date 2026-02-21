@@ -18,7 +18,7 @@ import { RouterLink } from 'vue-router'
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: var(--space-4xl) var(--space-lg);
+  padding: var(--space-section) var(--space-page);
 }
 
 .not-found h1 {
@@ -34,8 +34,8 @@ import { RouterLink } from 'vue-router'
 
 .back-home {
   text-decoration: none;
-  color: #111;
-  border: 1px solid #111;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
   padding: var(--space-xs) var(--space-md);
   transition:
     background-color var(--transition-fast),
@@ -43,7 +43,12 @@ import { RouterLink } from 'vue-router'
 }
 
 .back-home:hover {
-  background-color: #111;
-  color: #fff;
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+.back-home:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
 }
 </style>

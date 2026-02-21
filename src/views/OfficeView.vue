@@ -57,12 +57,12 @@ const services = [
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 4.8rem;
+  padding: var(--space-section);
 }
 
 .office-header {
   max-width: 1000px;
-  margin-bottom: 4.8rem;
+  margin-bottom: var(--space-section);
 }
 
 .office-header h1 {
@@ -74,20 +74,20 @@ const services = [
 
 .office-intro {
   font-size: 1rem;
-  color: #555;
+  color: var(--color-text-body);
   line-height: 1.6;
 }
 
 .services {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3.6rem;
+  gap: var(--space-card-grid-gap);
   max-width: 1800px;
   width: 100%;
 }
 
 .service {
-  padding: 3.6rem;
+  padding: var(--space-card-grid-gap);
   background-color: var(--color-surface);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
@@ -113,7 +113,7 @@ const services = [
   }
 
   .office {
-    padding: 2rem;
+    padding: var(--space-section-mobile);
   }
 }
 

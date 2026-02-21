@@ -57,7 +57,7 @@ const goToProjectDetails = (project) => {
 
 <style scoped>
 .projects-view {
-  padding: var(--space-xl) var(--space-sm) 40px;
+  padding: var(--space-xl) var(--space-sm) var(--space-3xl);
 }
 
 .gallery {
@@ -69,17 +69,18 @@ const goToProjectDetails = (project) => {
 .load-more-container {
   display: flex;
   justify-content: center;
-  margin-top: 26px;
+  margin-top: var(--space-xl);
 }
 
 .load-more-button {
-  border: 1px solid #111;
-  color: #111;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
   background: var(--color-surface);
   font-family: var(--font-family-display);
   letter-spacing: 1px;
   font-size: 0.8rem;
-  padding: var(--space-sm) 18px;
+  min-height: var(--touch-target-size);
+  padding: var(--space-sm) var(--space-lg);
   cursor: pointer;
   transition:
     background-color var(--transition-fast),
@@ -87,14 +88,19 @@ const goToProjectDetails = (project) => {
 }
 
 .load-more-button:hover {
-  color: #fff;
-  background-color: #111;
+  color: var(--color-accent-contrast);
+  background-color: var(--color-accent);
+}
+
+.load-more-button:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
 }
 
 .empty-state {
   text-align: center;
-  color: #6f6f6f;
-  padding: 30px 0 var(--space-md);
+  color: var(--color-text-secondary);
+  padding: var(--space-xl) 0 var(--space-md);
 }
 
 @media (max-width: 1024px) {
@@ -105,7 +111,7 @@ const goToProjectDetails = (project) => {
 
 @media (max-width: 768px) {
   .projects-view {
-    padding-top: 12px;
+    padding-top: var(--space-sm);
   }
 
   .gallery {

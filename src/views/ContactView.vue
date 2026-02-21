@@ -57,12 +57,12 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 4.8rem;
+  padding: var(--space-section);
 }
 
 .contact-header {
   max-width: 1000px;
-  margin-bottom: 4.8rem;
+  margin-bottom: var(--space-section);
 }
 
 .contact-header h1 {
@@ -75,7 +75,7 @@
 .contact-container {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: var(--space-content-gap);
   max-width: 1500px;
   width: 100%;
 }
@@ -83,13 +83,13 @@
 .contact-details {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: var(--space-content-gap-lg);
 }
 
 .details {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2.5rem;
+  gap: var(--space-grid-gap);
 }
 
 .detail-item h4 {
@@ -98,7 +98,7 @@
 }
 
 .detail-item p {
-  color: #7f8c8d;
+  color: var(--color-text-detail);
   font-size: 16px;
   line-height: 1.6;
 }
@@ -108,8 +108,13 @@
   text-decoration: none;
 }
 
+.detail-item a:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
 .map {
-  margin-top: 3rem;
+  margin-top: var(--space-content-gap);
   width: 100%;
   height: 100%;
   overflow: hidden;

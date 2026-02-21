@@ -57,7 +57,7 @@ const emit = defineEmits(['open'])
   left: 0;
   width: 100%;
   text-align: center;
-  color: #fff;
+  color: var(--color-accent-contrast);
   padding: 50px 50px var(--space-lg);
   opacity: 0;
   transition: opacity var(--transition-base);
@@ -93,8 +93,8 @@ const emit = defineEmits(['open'])
 }
 
 .gallery-item:focus-visible {
-  outline: 2px solid #111;
-  outline-offset: 2px;
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
 }
 
 @keyframes fadeIn {

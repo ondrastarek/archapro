@@ -247,14 +247,15 @@ onBeforeUnmount(() => {
 
 .slider-controls {
   position: fixed;
-  bottom: 30px;
+  bottom: var(--space-2xl);
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: var(--space-sm) 15px;
+  justify-content: center;
+  gap: var(--space-xs);
+  background-color: var(--color-overlay-controls);
+  padding: var(--space-sm) var(--space-control-inline);
   border-radius: var(--radius-sm);
   z-index: 1002;
 }
@@ -263,7 +264,9 @@ onBeforeUnmount(() => {
 .close-button {
   background-color: transparent;
   border: none;
-  padding-inline: 15px;
+  min-width: var(--touch-target-size);
+  min-height: var(--touch-target-size);
+  padding-inline: var(--space-control-inline);
   cursor: pointer;
   transition: transform var(--transition-base), filter var(--transition-base);
 }
@@ -279,5 +282,11 @@ onBeforeUnmount(() => {
 .close-button:hover img {
   transform: scale(1.2);
   filter: brightness(1.5);
+}
+
+.arrow:focus-visible,
+.close-button:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
 }
 </style>

@@ -137,8 +137,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1rem;
-  height: 60px;
+  padding: 0 var(--space-page-mobile);
+  height: var(--header-height-mobile);
   background-color: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
   position: sticky;
@@ -157,6 +157,10 @@ header {
   background: transparent;
   flex-direction: column;
   gap: 5px;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--touch-target-size);
+  min-height: var(--touch-target-size);
   cursor: pointer;
   transition: transform var(--transition-base);
 }
@@ -165,9 +169,14 @@ header {
   display: block;
   height: 3px;
   width: 25px;
-  background-color: #000;
+  background-color: var(--color-accent);
   border-radius: 2px;
   transition: all var(--transition-base);
+}
+
+.hamburger-menu:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
 }
 
 .hamburger-menu.open span:nth-child(1) {
@@ -184,7 +193,7 @@ header {
 
 .mobile-nav {
   position: absolute;
-  top: 60px;
+  top: var(--header-height-mobile);
   left: 0;
   right: 0;
   display: flex;
@@ -210,10 +219,13 @@ header {
 }
 
 .mobile-nav a {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   width: 100%;
-  padding: 1rem 0;
+  min-height: var(--touch-target-size);
+  padding: var(--space-md) 0;
   text-decoration: none;
   color: var(--color-text-subtle);
   font-size: 1rem;
@@ -227,7 +239,14 @@ header {
 
 .mobile-nav a:hover,
 .mobile-nav .router-link-exact-active {
-  color: #000;
+  color: var(--color-accent);
+}
+
+.mobile-nav a:focus-visible,
+.desktop-nav a:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+  background-color: var(--color-surface-muted);
 }
 
 .desktop-nav {
@@ -236,7 +255,7 @@ header {
 
 .desktop-nav a:hover,
 .desktop-nav .router-link-exact-active {
-  color: #000;
+  color: var(--color-accent);
 }
 
 @media (max-width: 1024px) {
@@ -276,8 +295,8 @@ header {
 
   .desktop-nav a {
     display: inline-block;
-    padding: 1rem;
-    border-left: 1px solid gray;
+    padding: var(--space-md);
+    border-left: 1px solid var(--color-border-strong);
     text-decoration: none;
     color: var(--color-text-subtle);
     font-weight: lighter;

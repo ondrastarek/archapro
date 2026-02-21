@@ -87,13 +87,13 @@ watch(
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-bottom: 50px;
+  padding-bottom: var(--space-3xl);
 }
 
 .gallery-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 25px;
+  gap: var(--space-gallery-gap);
   justify-content: center;
   padding: 0 var(--space-2xs);
 }
@@ -126,7 +126,7 @@ watch(
 }
 
 .gallery-item:focus-visible {
-  outline: 2px solid #111;
+  outline: var(--focus-ring);
   outline-offset: 3px;
 }
 
@@ -150,8 +150,8 @@ watch(
 
 .back-link {
   text-decoration: none;
-  color: #111;
-  border: 1px solid #111;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
   padding: var(--space-xs) var(--space-md);
   display: inline-block;
   transition:
@@ -160,8 +160,13 @@ watch(
 }
 
 .back-link:hover {
-  background-color: #111;
-  color: #fff;
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+.back-link:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
 }
 
 @keyframes fadeIn {

@@ -35,13 +35,14 @@ const emit = defineEmits(['select'])
   flex-wrap: wrap;
   gap: var(--space-xs);
   justify-content: center;
-  margin-bottom: 22px;
+  margin-bottom: var(--space-lg);
 }
 
 .filter-button {
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
+  min-height: var(--touch-target-size);
   border: 1px solid var(--color-border);
   background-color: var(--color-surface);
   color: var(--color-text-secondary);
@@ -57,19 +58,24 @@ const emit = defineEmits(['select'])
 }
 
 .filter-button:hover {
-  color: #111;
+  color: var(--color-accent);
   border-color: var(--color-border-strong);
 }
 
 .filter-button.active {
-  color: #111;
-  border-color: #111;
-  background-color: #f3f3f3;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background-color: var(--color-surface-muted);
+}
+
+.filter-button:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
 }
 
 .count {
   font-size: 0.75rem;
-  color: #8b8b8b;
+  color: var(--color-text-soft);
 }
 
 @media (max-width: 768px) {
