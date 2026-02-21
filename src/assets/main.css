@@ -1,71 +1,62 @@
+@import './tokens.css';
+
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
-    font-weight: normal;
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-    display: grid;
-    grid-template-rows: auto 1fr auto; /* Header, Content (flexible), Footer */
-    line-height: 1.6;
-    font-family:
-            Inter,
-            -apple-system,
-            BlinkMacSystemFont,
-            'Segoe UI',
-            Roboto,
-            Oxygen,
-            Ubuntu,
-            Cantarell,
-            'Fira Sans',
-            'Droid Sans',
-            'Helvetica Neue',
-            sans-serif;
-    font-size: 15px;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  line-height: 1.6;
+  font-family: var(--font-family-sans);
+  font-size: 15px;
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #app {
-    display: grid;
-    grid-template-rows: auto 1fr auto; /* Header, Content, Footer */
-    min-height: 100vh; /* Ensure the layout fills the entire viewport height */
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
 
 main {
-    grid-row: 2; /* Middle row for content */
+  grid-row: 2;
 }
 
 footer {
-    grid-row: 3; /* Last row for the footer */
-    text-align: center;
-    font-size: 0.875rem;
-    border-top: 1px solid #ccc;
-    padding: 10px;
-    color: #666;
-    background-color: #f9f9f9;
+  grid-row: 3;
+  text-align: center;
+  font-size: 0.875rem;
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-sm);
+  color: var(--color-text-secondary);
+  background-color: var(--color-footer-background);
 }
 
-/* Footer Styles */
-
 .footer-content span {
-    display: block;
+  display: block;
 }
 
 .footer-content span:first-child {
-    margin-bottom: 5px;
+  margin-bottom: var(--space-2xs);
 }
 
 .footer a {
-    text-decoration: none;
-    color: inherit; /* Matches the footer text color */
+  text-decoration: none;
+  color: inherit;
 }
 
 .footer a:hover {
-    color: #000; /* Slightly darker color on hover */
+  color: #000;
 }

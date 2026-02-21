@@ -17,13 +17,7 @@ const router = createRouter({
     {
       path: '/projekty/:id',
       name: 'project-details',
-      component: () => import('../views/ProjectDetailView.vue'),
-      props: route => ({
-        id: route.params.id,
-        name: route.query.name,
-        description: route.query.description,
-        image: route.query.image
-      })
+      component: () => import('../views/ProjectDetailView.vue')
     },
     {
       path: '/kancelar',
@@ -34,6 +28,11 @@ const router = createRouter({
       path: '/kontakt',
       name: 'contact',
       component: () => import('../views/ContactView.vue')
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('../views/NotFoundView.vue')
     }
   ]
 })

@@ -3,95 +3,68 @@
     <div class="text-container">
       <h2>{{ project.name }}</h2>
     </div>
+
     <div class="gallery-container-wrapper">
       <div class="gallery-container">
-        <div
+        <button
           v-for="(image, index) in project.gallery"
-          :key="index"
+          :key="image"
+          type="button"
           class="gallery-item"
           :style="{ animationDelay: `${index * 0.1}s` }"
-        @click="openSlider(index)"
+          @click="openSlider(index)"
         >
-        <img :src="image" :alt="`Gallery image ${index + 1}`" />
+          <img :src="image" :alt="`Galerie ${index + 1}`" loading="lazy" />
+        </button>
       </div>
     </div>
+
+    <ImageSlider
+      v-if="isSliderOpen"
+      :images="project.gallery"
+      :start-index="selectedIndex"
+      :is-open="isSliderOpen"
+      @close="isSliderOpen = false"
+    />
   </div>
-  <ImageSlider
-    v-if="isSliderOpen"
-    :images="project.gallery"
-    :startIndex="selectedIndex"
-    :isOpen="isSliderOpen"
-    @close="isSliderOpen = false"
-  />
-  </div>
-  <div v-else>
-    <p>Loading...</p>
+
+  <div v-else class="project-not-found">
+    <h2>Projekt nenalezen</h2>
+    <p>Projekt s tímto ID neexistuje nebo byl přesunut.</p>
+    <RouterLink to="/projekty" class="back-link">Zpět na projekty</RouterLink>
   </div>
 </template>
 
-<script>
-import ImageSlider from '@/components/ImageSlider.vue';
-import { useStore } from 'vuex'; // Import Vuex store
-import { onMounted, ref } from 'vue';
-import { useRoute } from 'vue-router'; // Access route params
+<script setup>
+import { computed, ref, watch } from 'vue'
+import { RouterLink, useRoute } from 'vue-router'
+import ImageSlider from '@/components/ImageSlider.vue'
+import { useProjects } from '@/composables/useProjects'
 
-export default {
-  name: 'ProjectDetails',
-  components: {
-    ImageSlider,
-  },
-  setup() {
-    const store = useStore(); // Access Vuex store
-    const route = useRoute(); // Access route params
+const route = useRoute()
+const { projectById } = useProjects()
 
-    const isSliderOpen = ref(false);
-    const selectedIndex = ref(0);
-    const project = ref(null);
+const projectId = computed(() => Number.parseInt(String(route.params.id), 10))
+const project = computed(() => projectById(projectId.value))
 
-    // Load project data
-    const loadProject = () => {
-      const projectId = parseInt(route.params.id, 10); // Get project ID from route
-      const storedProject = store.getters.selectedProject;
+const isSliderOpen = ref(false)
+const selectedIndex = ref(0)
 
-      // If project is already in Vuex, use it
-      if (storedProject && storedProject.id === projectId) {
-        project.value = storedProject;
-      } else {
-        // Fetch project from Vuex state
-        const allProjects = store.getters.projects;
-        project.value = allProjects.find((p) => p.id === projectId);
-      }
+const openSlider = (index) => {
+  selectedIndex.value = index
+  isSliderOpen.value = true
+}
 
-      // If project is still null, handle the error or fallback
-      if (!project.value) {
-        console.error('Project not found!');
-      }
-    };
-
-    const openSlider = (index) => {
-      selectedIndex.value = index;
-      isSliderOpen.value = true;
-    };
-
-    onMounted(() => {
-      loadProject(); // Load project data when component is mounted
-    });
-
-    return {
-      project,
-      isSliderOpen,
-      selectedIndex,
-      openSlider,
-    };
-  },
-};
+watch(
+  () => route.params.id,
+  () => {
+    isSliderOpen.value = false
+    selectedIndex.value = 0
+  }
+)
 </script>
 
 <style scoped>
-* {
-  box-sizing: border-box;
-}
-
 .project-details {
   display: flex;
   flex-direction: column;
@@ -99,21 +72,22 @@ export default {
 
 .text-container {
   text-align: center;
-  padding: 60px 20px;
+  padding: var(--space-4xl) var(--space-lg);
 }
 
 .text-container h2 {
   font-size: 36px;
   margin: 0 auto;
   line-height: 1.4;
+  color: var(--color-text-primary);
 }
 
 .gallery-container-wrapper {
-  flex: 1; /* Dynamically grows to fill the remaining space */
+  flex: 1;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Ensures the gallery aligns properly */
-  padding-bottom: 50px; /* Leaves space for the footer */
+  align-items: flex-start;
+  padding-bottom: 50px;
 }
 
 .gallery-container {
@@ -121,18 +95,20 @@ export default {
   flex-wrap: wrap;
   gap: 25px;
   justify-content: center;
-  padding: 0 4px;
+  padding: 0 var(--space-2xs);
 }
 
 .gallery-item {
   flex: 33%;
   max-width: 30%;
   padding: 0;
+  border: none;
+  background: transparent;
   position: relative;
-  border-radius: 8px;
-  opacity: 0; /* Initially hidden */
-  animation: fadeIn 0.4s ease-in-out forwards; /* Fade-in animation */
-  transition: transform 0.3s ease;
+  border-radius: var(--radius-md);
+  opacity: 0;
+  animation: fadeIn 0.4s ease-in-out forwards;
+  transition: transform var(--transition-base);
 }
 
 .gallery-item img {
@@ -142,11 +118,50 @@ export default {
   object-fit: cover;
   border-radius: 0;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--shadow-soft);
 }
 
 .gallery-item:hover {
   transform: scale(1.02);
+}
+
+.gallery-item:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}
+
+.project-not-found {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-4xl) var(--space-lg);
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+.project-not-found h2 {
+  font-size: 2rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.project-not-found p {
+  margin-bottom: var(--space-lg);
+}
+
+.back-link {
+  text-decoration: none;
+  color: #111;
+  border: 1px solid #111;
+  padding: var(--space-xs) var(--space-md);
+  display: inline-block;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.back-link:hover {
+  background-color: #111;
+  color: #fff;
 }
 
 @keyframes fadeIn {
@@ -154,6 +169,7 @@ export default {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

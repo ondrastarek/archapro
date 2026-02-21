@@ -11,11 +11,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'IndexView'
-}
-</script>
+<script setup></script>
 
 <style scoped>
 .index {
@@ -25,8 +21,8 @@ export default {
   justify-content: center;
   text-align: center;
   padding: 2rem;
-  background-color: white;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  background-color: var(--color-background);
+  overflow-x: hidden;
 }
 
 .hero-section {
@@ -36,16 +32,16 @@ export default {
 }
 
 .company-name {
-  font-family: 'Courier', serif;
+  font-family: var(--font-family-display);
   font-size: 3rem;
   font-weight: lighter;
-  color: #333;
+  color: var(--color-text-primary);
   margin-bottom: 1rem;
 }
 
 .tagline {
   font-size: 1.2rem;
-  color: #777;
+  color: var(--color-text-muted);
   margin-bottom: 2rem;
   letter-spacing: 1px;
 }
@@ -59,13 +55,12 @@ export default {
 }
 
 .sketch-image img {
-  width: 100%; /* Make the images responsive */
-  max-width: 900px; /* Limit image size for large screens */
-  height: auto; /* Allow natural aspect ratio */
-  object-fit: contain; /* Ensure the image is fully visible without cropping */
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  object-fit: contain;
 }
 
-/* Responsive styling */
 @media (min-width: 1468px) {
   .company-name {
     font-size: 4rem;
@@ -76,7 +71,7 @@ export default {
   }
 
   .sketch-image {
-    flex-wrap: nowrap; /* Display images side by side */
+    flex-wrap: nowrap;
   }
 }
 
@@ -92,11 +87,11 @@ export default {
   }
 
   .tagline {
-    font-size: 1rem; /* Adjust font size for smaller screens */
+    font-size: 1rem;
   }
 
   .company-name {
-    font-size: 2.5rem; /* Adjust heading size for smaller screens */
+    font-size: 2.5rem;
   }
 }
 </style>

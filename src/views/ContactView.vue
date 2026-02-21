@@ -3,8 +3,8 @@
     <div class="contact-header">
       <h1>ARCHAPRO Liberec s.r.o.</h1>
     </div>
+
     <div class="contact-container">
-      <!-- First Row -->
       <div class="contact-details">
         <div class="details">
           <div class="detail-item">
@@ -34,27 +34,22 @@
         </div>
       </div>
 
-      <!-- Second Row -->
       <div class="map">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d289.104260729439!2d15.041442657201937!3d50.791058028649125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470936cb1ba146a9%3A0x7aa3f06a7400ef6f!2sMyslbekova%20206%2C%20463%2003%20Str%C3%A1%C5%BE%20nad%20Nisou!5e0!3m2!1scs!2scz!4v1731789090269!5m2!1scs!2scz"
           width="100%"
           height="450"
-          style="border:0;"
+          style="border: 0"
           allowfullscreen=""
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'ContactView',
-};
-</script>
+<script setup></script>
 
 <style scoped>
 .contact {
@@ -71,9 +66,9 @@ export default {
 }
 
 .contact-header h1 {
-  font-family: 'Georgia', serif;
+  font-family: var(--font-family-serif);
   font-size: 2.5rem;
-  color: #333;
+  color: var(--color-text-primary);
   margin-bottom: 1rem;
 }
 
@@ -109,7 +104,7 @@ export default {
 }
 
 .detail-item a {
-  color: #3498db;
+  color: var(--color-link);
   text-decoration: none;
 }
 
@@ -122,16 +117,12 @@ export default {
 
 iframe {
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
   .details {
     grid-template-columns: 1fr;
-  }
-  .map {
-
   }
 }
 

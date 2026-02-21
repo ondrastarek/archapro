@@ -1,81 +1,100 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import { ref, onMounted, onUnmounted } from 'vue'
-import { useStore } from 'vuex' // Import Vuex store
+import { RouterLink, RouterView, useRoute } from 'vue-router'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
 
-const store = useStore(); // Access the store
-const isMenuOpen = ref(false);
+const isMenuOpen = ref(false)
+const mobileNavRef = ref(null)
+const menuButtonRef = ref(null)
+const mobileNavId = 'mobile-nav'
+const route = useRoute()
+
+const closeMenu = () => {
+  isMenuOpen.value = false
+}
 
 const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value;
-};
+  isMenuOpen.value = !isMenuOpen.value
+}
 
-// Close the menu if clicked outside
 const handleClickOutside = (event) => {
-  const nav = document.querySelector('.mobile-nav');
-  const menuButton = document.querySelector('.hamburger-menu');
-
-  // Check if the click is outside the nav or the hamburger menu
-  if (isMenuOpen.value && nav && !nav.contains(event.target) && !menuButton.contains(event.target)) {
-    isMenuOpen.value = false; // Close the menu
+  if (!isMenuOpen.value) {
+    return
   }
-};
 
-// Attach and detach the event listener
+  const nav = mobileNavRef.value
+  const button = menuButtonRef.value
+
+  if (
+    nav &&
+    button &&
+    !nav.contains(event.target) &&
+    !button.contains(event.target)
+  ) {
+    closeMenu()
+  }
+}
+
+const handleEscape = (event) => {
+  if (event.key === 'Escape') {
+    closeMenu()
+  }
+}
+
+watch(
+  () => route.fullPath,
+  () => {
+    closeMenu()
+  }
+)
+
 onMounted(() => {
-  window.addEventListener('click', handleClickOutside);
-});
+  window.addEventListener('click', handleClickOutside)
+  window.addEventListener('keydown', handleEscape)
+})
 
 onUnmounted(() => {
-  window.removeEventListener('click', handleClickOutside);
-});
-
-
-// Preload project gallery images
-const preloadGalleryImages = () => {
-  const projects = store.getters.projects; // Access projects from Vuex getters
-  projects.forEach(project => {
-      const img = new Image();
-      img.src = project.thumbnail;
-  });
-  console.log('Thumbnails images preloaded globally.');
-};
-
-onMounted(() => {
-  preloadGalleryImages(); // Start preloading gallery images when the app is mounted
-});
+  window.removeEventListener('click', handleClickOutside)
+  window.removeEventListener('keydown', handleEscape)
+})
 </script>
 
 <template>
   <div id="app">
     <header>
-      <!-- Logo and Hamburger Menu Row -->
       <div class="mobile-header">
         <RouterLink to="/">
           <div class="logo">
             <img src="/logo2.svg" alt="Logo" />
           </div>
         </RouterLink>
-        <div
+
+        <button
+          ref="menuButtonRef"
           class="hamburger-menu"
           :class="{ open: isMenuOpen }"
+          type="button"
+          :aria-expanded="String(isMenuOpen)"
+          :aria-controls="mobileNavId"
+          aria-label="Otevřít navigaci"
           @click="toggleMenu"
         >
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </button>
       </div>
-      <!-- Mobile Navigation -->
+
       <div
+        :id="mobileNavId"
+        ref="mobileNavRef"
         class="mobile-nav"
         :class="{ visible: isMenuOpen }"
       >
-        <RouterLink to="/projekty" @click="toggleMenu">projekty</RouterLink>
-        <RouterLink to="/kancelar" @click="toggleMenu">ateliér</RouterLink>
-        <RouterLink to="/kontakt" @click="toggleMenu">kontakt</RouterLink>
+        <RouterLink to="/projekty" @click="closeMenu">projekty</RouterLink>
+        <RouterLink to="/kancelar" @click="closeMenu">ateliér</RouterLink>
+        <RouterLink to="/kontakt" @click="closeMenu">kontakt</RouterLink>
       </div>
-      <!-- Desktop Navigation -->
+
       <nav class="desktop-nav">
         <RouterLink to="/">
           <div class="logo">
@@ -92,13 +111,17 @@ onMounted(() => {
       <RouterView />
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="footer-content">
-        <span>&copy; 2021-2025 ARCHAPRO Liberec s.r.o.</span>
+        <span>&copy; 2021-2026 ARCHAPRO Liberec s.r.o.</span>
         <span>
           implemented by
-          <a href="https://ondrejstarek.cz" target="_blank" rel="noopener noreferrer">ondrejstarek</a>
+          <a
+            href="https://www.linkedin.com/in/starek-ondrej"
+            target="_blank"
+            rel="noopener noreferrer"
+            >ondrejstarek</a
+          >
         </span>
       </div>
     </footer>
@@ -106,20 +129,18 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* General Styles */
 header {
-  font-family: Courier, serif;
+  font-family: var(--font-family-display);
 }
 
-/* Logo and Hamburger Menu Row */
 .mobile-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
   height: 60px;
-  background-color: white;
-  border-bottom: 1px solid #ccc;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -130,13 +151,14 @@ header {
   width: auto;
 }
 
-/* Hamburger Menu Animation */
 .hamburger-menu {
   display: none;
+  border: 0;
+  background: transparent;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-base);
 }
 
 .hamburger-menu span {
@@ -145,7 +167,7 @@ header {
   width: 25px;
   background-color: #000;
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transition: all var(--transition-base);
 }
 
 .hamburger-menu.open span:nth-child(1) {
@@ -160,22 +182,24 @@ header {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Mobile Navigation Animation */
 .mobile-nav {
   position: absolute;
   top: 60px;
   left: 0;
   right: 0;
-  display: flex; /* Ensures flexbox is used */
-  flex-direction: column; /* Arrange items in a column */
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  background: white;
-  border-top: 1px solid #ccc;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  box-shadow: var(--shadow-menu);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base),
+    visibility var(--transition-base);
 }
 
 .mobile-nav.visible {
@@ -186,15 +210,15 @@ header {
 }
 
 .mobile-nav a {
-  display: block; /* Ensures each link is a block element */
-  text-align: center; /* Centers text horizontally */
-  width: 100%; /* Makes each link span the full width of the container */
+  display: block;
+  text-align: center;
+  width: 100%;
   padding: 1rem 0;
   text-decoration: none;
-  color: #A8A8A8;
+  color: var(--color-text-subtle);
   font-size: 1rem;
   letter-spacing: 2px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .mobile-nav a:last-child {
@@ -203,20 +227,18 @@ header {
 
 .mobile-nav a:hover,
 .mobile-nav .router-link-exact-active {
-  color: black;
+  color: #000;
 }
 
-/* Desktop Navigation */
 .desktop-nav {
   display: none;
 }
 
 .desktop-nav a:hover,
 .desktop-nav .router-link-exact-active {
-  color: black;
+  color: #000;
 }
 
-/* Responsive Styles */
 @media (max-width: 1024px) {
   .desktop-nav {
     display: none;
@@ -257,7 +279,7 @@ header {
     padding: 1rem;
     border-left: 1px solid gray;
     text-decoration: none;
-    color: #A8A8A8;
+    color: var(--color-text-subtle);
     font-weight: lighter;
   }
 
