@@ -9,7 +9,7 @@
         <div class="details">
           <div class="detail-item">
             <h4>Sídlo firmy:</h4>
-            <p>28. října 2362/36, 460 01 Jablonec nad Nisou</p>
+            <p>28. října 2362/36, 466 01 Jablonec nad Nisou</p>
           </div>
           <div class="detail-item">
             <h4>Navštívit nás můžete na adrese:</h4>
