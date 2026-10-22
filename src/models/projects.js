@@ -185,5 +185,12 @@ export const projects = [
     thumbnail: '/projects/23/thumbnail.png',
     gallery: generateGalleryPaths(23, 3, 'png'),
     categories: [CATEGORY.INTERIOR, CATEGORY.PUBLIC]
+  },
+  {
+    id: 24,
+    name: 'Stavební úpravy rodinného domu',
+    thumbnail: '/projects/24/thumbnail.jpeg',
+    gallery: generateGalleryPaths(24, 14, 'jpeg'),
+    categories: [CATEGORY.FAMILY_HOUSE, CATEGORY.RECONSTRUCTION, CATEGORY.INTERIOR]
   }
 ]
